@@ -12,7 +12,8 @@ export default () => {
             const response = await marvel.get(`characters?ts=${ts}&apikey=${pubKey}&hash=${hash}`, {
                 params: {
                     limit: 5,
-                    term: searchHero
+                    offset: 0,
+                    name: searchHero
                 }
             });
 
