@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     View,
     Text,
@@ -10,8 +10,16 @@ import {
 import { withNavigation } from 'react-navigation';
 
 export const ResultsList = withNavigation(({results, navigation}) => {
+    const [page, setPage] = useState(1);
+
     if(!results.length){
         return null;
+    }
+
+    const handleLoadMore = () => {
+        setPage(page + 1);
+
+
     }
 
     return (
@@ -19,6 +27,7 @@ export const ResultsList = withNavigation(({results, navigation}) => {
             <FlatList
                 data={results}
                 keyExtractor={result => result.id}
+                onEndReachedThreshold={0.5}
                 renderItem={({item}) => {
                     return(
                         <TouchableOpacity

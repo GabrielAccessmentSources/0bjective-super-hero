@@ -4,6 +4,7 @@ import { View, ScrollView, Text, StyleSheet } from 'react-native';
 import { SearchBar } from "../components/SearchBar";
 import { ResultsList } from "../components/ResultsList";
 import useResults from "../hooks/useResults";
+import { PaginationButtons } from "../components/PaginationButtons";
 
 export const SearchScreen = () => {
    const [term, setTerm] = useState('');
@@ -12,8 +13,8 @@ export const SearchScreen = () => {
 
   return (
       <>
-          <View>
-              <Text>Nome do Personagem</Text>
+          <View style={styles.topView}>
+              <Text style={styles.textStyle}>Nome do Personagem</Text>
               <SearchBar
                   term={term}
                   onTermChange={setTerm}
@@ -21,17 +22,29 @@ export const SearchScreen = () => {
               />
           </View>
 
-          <ScrollView style={styles.screen}>
+          <View style={styles.scrollScreen}>
               <ResultsList
                 results={results}
               />
-          </ScrollView>
+          </View>
+
+          <PaginationButtons/>
       </>
   );
 };
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1
+    topView: {
+      margin: 10
+    },
+    scrollScreen: {
+        height: 550,
+        backgroundColor: 'green'
+    },
+    textStyle: {
+        fontFamily: 'roboto-black',
+        fontSize: 16,
+        marginLeft: 18,
+        color: 'red'
     }
 });
