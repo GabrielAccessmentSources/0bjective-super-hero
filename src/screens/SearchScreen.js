@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import React, { useState, useMemo, useEffect } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 import { SearchBar } from "../components/SearchBar";
 import { ResultsList } from "../components/ResultsList";
 import useResults from "../hooks/useResults";
-import { PaginationButtons } from "../components/PaginationButtons";
+import { PaginationButtons } from "../components/particles/PaginationButtons";
 
 export const SearchScreen = () => {
    const [term, setTerm] = useState('');
    const [searchApi, results, errorMessage] = useResults();
+   const [page, setPage] = useState(0);
 
+   useEffect(() => {
+       searchApi({ searchHero: term, page: page })
+   },[results, page])
+
+
+   const fetchResults = useMemo(() => {
+       return(
+           <>
+               <ResultsList
+                   results={results} page={0}
+               />
+           </>
+       )
+   }, [results, page]);
 
   return (
       <>
@@ -18,17 +33,18 @@ export const SearchScreen = () => {
               <SearchBar
                   term={term}
                   onTermChange={setTerm}
-                  onTermSubmit={() => searchApi(term)}
+                  onTermSubmit={() => searchApi({ searchHero: term })}
               />
           </View>
 
           <View style={styles.scrollScreen}>
-              <ResultsList
-                results={results}
-              />
+              {fetchResults}
           </View>
 
-          <PaginationButtons/>
+          <PaginationButtons
+            page={page}
+            onPageChange={setPage}
+          />
       </>
   );
 };
@@ -39,10 +55,9 @@ const styles = StyleSheet.create({
     },
     scrollScreen: {
         height: 550,
-        backgroundColor: 'green'
     },
     textStyle: {
-        fontFamily: 'roboto-black',
+        // fontFamily: 'roboto-black',
         fontSize: 16,
         marginLeft: 18,
         color: 'red'

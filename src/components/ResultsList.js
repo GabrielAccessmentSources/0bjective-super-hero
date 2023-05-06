@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
     View,
     Text,
@@ -9,17 +9,9 @@ import {
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-export const ResultsList = withNavigation(({results, navigation}) => {
-    const [page, setPage] = useState(1);
-
+export const ResultsList = withNavigation(({ results, navigation }) => {
     if(!results.length){
         return null;
-    }
-
-    const handleLoadMore = () => {
-        setPage(page + 1);
-
-
     }
 
     return (
@@ -41,7 +33,6 @@ export const ResultsList = withNavigation(({results, navigation}) => {
                         </TouchableOpacity>
                     )
                 }}
-
             />
         </View>
     );

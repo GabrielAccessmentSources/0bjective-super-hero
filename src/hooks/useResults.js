@@ -3,16 +3,15 @@ import { useEffect, useState } from 'react';
 import marvel from "../api/marvel";
 import { ts, pubKey, hash } from '../helpers/secrets';
 
-
 export default () => {
     const [results, setResults] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const searchApi = async (searchHero = null) => {
+    const searchApi = async ({ searchHero = null, page }) => {
         try {
             let params = {
                 limit: 5,
-                offset: 0
+                offset: page
             }
 
             if (searchHero) {
@@ -30,8 +29,8 @@ export default () => {
     };
 
     useEffect(() => {
-        searchApi(null);
+        searchApi({ searchHero: null, page: 0 });
     }, []);
 
-    return [searchApi, results, errorMessage];
+    return [searchApi, results, errorMessage ];
 };
