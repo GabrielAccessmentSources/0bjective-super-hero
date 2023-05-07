@@ -1,37 +1,66 @@
-import React, { useState } from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import React, { useState, useMemo, useEffect } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 import { SearchBar } from "../components/SearchBar";
 import { ResultsList } from "../components/ResultsList";
 import useResults from "../hooks/useResults";
+import { PaginationButtons } from "../components/particles/PaginationButtons";
 
 export const SearchScreen = () => {
    const [term, setTerm] = useState('');
    const [searchApi, results, errorMessage] = useResults();
+   const [page, setPage] = useState(0);
 
+   useEffect(() => {
+       searchApi({ searchHero: term, page: page })
+   },[results, page])
+
+
+   const fetchResults = useMemo(() => {
+       return(
+           <>
+               <ResultsList
+                   results={results} page={0}
+               />
+           </>
+       )
+   }, [results, page]);
 
   return (
       <>
-          <View>
-              <Text>Nome do Personagem</Text>
+          <View style={styles.topView}>
+              <Text style={styles.textStyle}>Nome do Personagem</Text>
               <SearchBar
                   term={term}
                   onTermChange={setTerm}
-                  onTermSubmit={() => searchApi(term)}
+                  onTermSubmit={() => searchApi({ searchHero: term })}
               />
           </View>
+          {errorMessage && <Text>{errorMessage}</Text>}
 
-          <ScrollView style={styles.screen}>
-              <ResultsList
-                results={results}
-              />
-          </ScrollView>
+          <View style={styles.scrollScreen}>
+              {fetchResults}
+          </View>
+
+          <PaginationButtons
+            page={page}
+            onPageChange={setPage}
+          />
       </>
   );
 };
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1
+    topView: {
+      margin: 10
+    },
+    scrollScreen: {
+        height: 550,
+    },
+    textStyle: {
+        // fontFamily: 'roboto-black',
+        fontSize: 16,
+        marginLeft: 18,
+        color: 'red'
     }
 });

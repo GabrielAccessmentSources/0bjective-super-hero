@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-export const ResultsList = withNavigation(({results, navigation}) => {
+export const ResultsList = withNavigation(({ results, navigation }) => {
     if(!results.length){
         return null;
     }
@@ -19,6 +19,7 @@ export const ResultsList = withNavigation(({results, navigation}) => {
             <FlatList
                 data={results}
                 keyExtractor={result => result.id}
+                onEndReachedThreshold={0.5}
                 renderItem={({item}) => {
                     return(
                         <TouchableOpacity
@@ -32,7 +33,6 @@ export const ResultsList = withNavigation(({results, navigation}) => {
                         </TouchableOpacity>
                     )
                 }}
-
             />
         </View>
     );
