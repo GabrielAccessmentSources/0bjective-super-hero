@@ -13,7 +13,7 @@ export const SearchScreen = () => {
 
    useEffect(() => {
        searchApi({ searchHero: term, page: page })
-   },[results, page])
+   },[page])
 
 
    const fetchResults = useMemo(() => {

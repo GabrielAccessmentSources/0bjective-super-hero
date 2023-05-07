@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 import marvel from "../api/marvel";
-import { ts, pubKey, hash } from '../helpers/secrets';
+import { ts, pubKey, hash } from "../helpers/secrets";
 
 export default () => {
     const [results, setResults] = useState([]);
@@ -12,7 +12,7 @@ export default () => {
             let params = {
                 limit: 5,
                 offset: page
-            }
+            };
 
             if (searchHero) {
                 params.name = searchHero;
@@ -24,7 +24,7 @@ export default () => {
 
             setResults(response.data.data.results);
         } catch (error) {
-            setErrorMessage('Something went wrong');
+            setErrorMessage("Something went wrong");
         }
     };
 
