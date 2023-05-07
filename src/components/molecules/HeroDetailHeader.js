@@ -1,6 +1,5 @@
-import react from 'react';
-import {View, Text, StyleSheet, Image} from "react-native";
 import React from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 export const HeroDetailHeader = ({ name, imageUrl }) => {
     return(
@@ -23,26 +22,27 @@ const styles = StyleSheet.create({
    headerContainer: {
        flexDirection: "row",
        height: 200,
-       backgroundColor: "blue",
-       padding: 10
+       backgroundColor: "transparent",
+       padding: 10,
+       borderBottomWidth: 2,
+       borderColor: 'red'
    },
     imageContainer: {
-       height: 130,
-        width: 130,
+       height: 140,
+        width: 140,
         borderRadius: 90,
-        backgroundColor: 'red',
     },
     textContainer: {
        alignContent: "center",
         width: 250,
         padding: 10,
-        backgroundColor: "green",
-        marginLeft: 20,
+        marginLeft: 10,
         paddingTop: '18%'
     },
     h1Text: {
        textAlign: "center",
-        fontSize: 20
+        fontSize: 22,
+        color: 'red'
     },
     image: {
        flex: 1,
