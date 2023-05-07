@@ -36,6 +36,7 @@ export const SearchScreen = () => {
                   onTermSubmit={() => searchApi({ searchHero: term })}
               />
           </View>
+          {errorMessage && <Text>{errorMessage}</Text>}
 
           <View style={styles.scrollScreen}>
               {fetchResults}
