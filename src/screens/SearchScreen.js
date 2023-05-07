@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import { SearchBar } from "../components/SearchBar";
-import { ResultsList } from "../components/ResultsList";
+import { SearchBar } from "../components/molecules/SearchBar";
+import { ResultsList } from "../components/particles/ResultsList";
 import useResults from "../hooks/useResults";
 import { PaginationButtons } from "../components/particles/PaginationButtons";
 
@@ -38,6 +38,9 @@ export const SearchScreen = () => {
           </View>
           {errorMessage && <Text>{errorMessage}</Text>}
 
+          <View style={styles.secondaryContainer}>
+              <Text style={styles.secondaryText}>Nome</Text>
+          </View>
           <View style={styles.scrollScreen}>
               {fetchResults}
           </View>
@@ -57,10 +60,20 @@ const styles = StyleSheet.create({
     scrollScreen: {
         height: 550,
     },
+    secondaryContainer: {
+      backgroundColor: 'red',
+        height: 50,
+        paddingTop: 15
+    },
     textStyle: {
         // fontFamily: 'roboto-black',
         fontSize: 16,
         marginLeft: 18,
         color: 'red'
+    },
+    secondaryText: {
+        marginLeft: 100,
+        color: 'white',
+        fontSize: 16
     }
 });

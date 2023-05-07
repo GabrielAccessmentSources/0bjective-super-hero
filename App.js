@@ -10,7 +10,13 @@ const navigator = createStackNavigator({
 }, {
   initialRouteName: 'Search',
   defaultNavigationOptions: {
-    title: 'Busca Marvel Teste Front-End'
+    title: 'Busca Marvel Teste Front-End',
+    headerBackTitleVisible: false,
+    headerTintColor: 'red',
+    headerTitleAlign:'left',
+    headerTitleStyle: {
+      textAlign: "left"
+    },
   }
 });
 
