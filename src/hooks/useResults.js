@@ -18,15 +18,12 @@ export default () => {
                 params.name = searchHero;
             }
 
-            console.log("Ive fetched")
-
             const response = await marvel.get(`characters?ts=${ts}&apikey=${pubKey}&hash=${hash}`, {
                 params,
             });
 
             setResults(response.data.data.results);
         } catch (error) {
-            console.log(error)
             setErrorMessage("Something went wrong");
         }
     };

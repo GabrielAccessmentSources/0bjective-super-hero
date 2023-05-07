@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons'
 
 import { PaginationNumber } from "../atoms/PaginationNumber";
 
 export const PaginationButtons = ({ page, onPageChange }) => {
-    // Nums will be from 1 to 3 it'll show data from 0-5, 5-10 and 10-11
     const onPressForward = () => {
         onPageChange(page + 5)
     };
 
     const onPressBackwards = () => {
         onPageChange(page - 5)
-    }
+    };
+
     return (
         <View style={styles.screen}>
             <TouchableOpacity style={styles.arrows} onPress={() => onPressBackwards()}>
@@ -20,7 +20,7 @@ export const PaginationButtons = ({ page, onPageChange }) => {
             </TouchableOpacity>
 
             <View style={styles.numsContainer}>
-                {/*Change this to a flatlist */}
+                {/*REFACTOR: Change this to a flatlist */}
                 <TouchableOpacity>
                     <PaginationNumber number={1} />
                 </TouchableOpacity>

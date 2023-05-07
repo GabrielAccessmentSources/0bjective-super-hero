@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import marvel from "../api/marvel";
 import { ts, pubKey, hash } from "../helpers/secrets";
@@ -9,8 +9,6 @@ export default () => {
 
     const searchDetails = async({heroId}) => {
         try {
-            console.log("I entered here");
-
             const response = await marvel.get(`/characters/${heroId}`, { params: {
                     ts: ts,
                     apikey: pubKey,
@@ -19,7 +17,6 @@ export default () => {
 
             setDetails(response.data.data.results[0])
         } catch (error) {
-            console.log(error)
             setErrorMessage("Something went wrong")
         }
     };
