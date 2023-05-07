@@ -20,7 +20,7 @@ export const SearchScreen = () => {
        return(
            <>
                <ResultsList
-                   results={results} page={0}
+                   results={results}
                />
            </>
        )
