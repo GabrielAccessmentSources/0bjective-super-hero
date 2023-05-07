@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
         paddingTop: 15
     },
     textStyle: {
-        // fontFamily: 'roboto-black',
         fontSize: 16,
         marginLeft: 18,
         color: 'red'
