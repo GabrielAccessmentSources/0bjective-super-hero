@@ -16,7 +16,9 @@ _yarn global add expo-cli_;
 
 ### Screenshots
 
-![image](https://user-images.githubusercontent.com/56320217/236691364-30d123fe-a6ff-4a85-9a39-d82bcc6b1015.png)
+![image](https://user-images.githubusercontent.com/56320217/236831793-1329423a-15ed-4c43-a283-15cb5a0a635b.png)
+
+![image](https://user-images.githubusercontent.com/56320217/236831818-52792a0e-02c3-496c-92ea-58e5849f7b2f.png)
 
 ![image](https://user-images.githubusercontent.com/56320217/236691370-1ffb8be5-7e7b-4c28-9b19-33499c0ccb6a.png)
 
