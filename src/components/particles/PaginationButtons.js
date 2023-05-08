@@ -1,36 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons'
 
 import { PaginationNumber } from "../atoms/PaginationNumber";
 
 export const PaginationButtons = ({ page, onPageChange }) => {
+    const [counter, setCounter ] = useState(1)
+
     const onPressForward = () => {
+        setCounter(counter + 1)
         onPageChange(page + 5)
     };
 
     const onPressBackwards = () => {
+        setCounter(counter - 1)
         onPageChange(page - 5)
+    };
+
+    const onPressForwardTwoTimes = () => {
+        setCounter(counter + 2)
+        onPageChange(page + 10)
     };
 
     return (
         <View style={styles.screen}>
-            <TouchableOpacity style={styles.arrows} onPress={() => onPressBackwards()}>
+            <TouchableOpacity
+                style={styles.arrows}
+                onPress={() => onPressBackwards()}
+                disabled={page === 0}
+            >
                 <AntDesign name="caretleft" size={18} color="red" />
             </TouchableOpacity>
 
             <View style={styles.numsContainer}>
-                {/*REFACTOR: Change this to a flatlist */}
-                <TouchableOpacity>
-                    <PaginationNumber number={1} />
+                <TouchableOpacity disabled={page === 0}>
+                    <PaginationNumber number={counter} selected={true} />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
-                    <PaginationNumber number={2} />
+                <TouchableOpacity onPress={() => onPressForward()}>
+                    <PaginationNumber number={counter + 1} />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
-                    <PaginationNumber number={3} />
+                <TouchableOpacity onPress={() => onPressForwardTwoTimes()}>
+                    <PaginationNumber number={counter + 2} />
                 </TouchableOpacity>
 
             </View>
