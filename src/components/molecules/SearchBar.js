@@ -3,20 +3,21 @@ import { View, StyleSheet, TextInput } from "react-native";
 
 export const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
     return (
-        <View style={styles.background}>
+        <View style={SearchBarStyles.background}>
             <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
-                style={styles.inputStyle}
+                style={SearchBarStyles.inputStyle}
                 value={term}
                 onChangeText={onTermChange}
                 onEndEditing={onTermSubmit}
+                testID={'search-bar-input'}
             />
         </View>
     );
 };
 
-const styles = StyleSheet.create({
+export const SearchBarStyles = StyleSheet.create({
     background: {
         backgroundColor: 'white',
         height: 50,

@@ -23,8 +23,9 @@ export const PaginationButtons = ({ page, onPageChange }) => {
     };
 
     return (
-        <View style={styles.screen}>
+        <View style={styles.screen} testID={'pagination-buttons'}>
             <TouchableOpacity
+                testID={'pagination-backwards'}
                 style={styles.arrows}
                 onPress={() => onPressBackwards()}
                 disabled={page === 0}
@@ -47,7 +48,11 @@ export const PaginationButtons = ({ page, onPageChange }) => {
 
             </View>
 
-            <TouchableOpacity style={styles.arrows} onPress={() => onPressForward()}>
+            <TouchableOpacity
+                style={styles.arrows}
+                onPress={() => onPressForward()}
+                testID={'pagination-forward'}
+            >
                 <AntDesign name="caretright" size={18} color="red" />
             </TouchableOpacity>
         </View>

@@ -3,22 +3,23 @@ import { View, Text, StyleSheet, Image } from "react-native";
 
 export const HeroDetailHeader = ({ name, imageUrl }) => {
     return(
-        <View style={styles.headerContainer}>
-            <View style={styles.imageContainer}>
+        <View style={heroDetailHeaderStyles.headerContainer}>
+            <View style={heroDetailHeaderStyles.imageContainer}>
                 <Image
-                    style={styles.image}
+                    style={heroDetailHeaderStyles.image}
                     source={{ uri: `${imageUrl}/portrait_medium.jpg` }}
+                    testID={'hero-image'}
                 />
             </View>
 
-            <View style={styles.textContainer}>
-                <Text style={ styles.h1Text}>{name}</Text>
+            <View style={heroDetailHeaderStyles.textContainer}>
+                <Text style={ heroDetailHeaderStyles.h1Text}>{name}</Text>
             </View>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
+export const heroDetailHeaderStyles = StyleSheet.create({
    headerContainer: {
        flexDirection: "row",
        height: 200,

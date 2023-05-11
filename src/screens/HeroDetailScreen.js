@@ -31,7 +31,7 @@ export const HeroDetailScreen = ({ navigation }) => {
         <View style={styles.screen}>
             {errorMessage && <Text>{errorMessage}</Text>}
             {loader? (
-                <ActivityIndicator animating={loader} color={'red'}/>
+                <ActivityIndicator animating={loader} color={'red'} testID={'loader'}/>
             ) : showData()}
         </View>
     );
