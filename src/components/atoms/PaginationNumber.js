@@ -12,7 +12,7 @@ export const PaginationNumber = ({ number, selected }) => {
   )
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     screen: {
         width: 30,
         height: 30,
