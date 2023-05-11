@@ -1,8 +1,7 @@
 import React from 'react';
 import { render} from '@testing-library/react-native';
 
-import { PaginationNumber } from "../../src/components/atoms/PaginationNumber";
-import { styles } from "../../src/components/atoms/PaginationNumber";
+import { PaginationNumber, paginationNumberStyles } from "../../src/components/atoms/PaginationNumber";
 
 describe( 'tests the pagination number page',() => {
     test('renders the page', () => {
@@ -16,7 +15,7 @@ describe( 'tests the pagination number page',() => {
         const viewElement = getByTestId('selected-pagination-number-view');
         const textElement = getByText('1');
 
-        expect(viewElement.props.style).toMatchObject(styles.selected);
-        expect(textElement.props.style).toMatchObject(styles.selectedNumberStyle);
+        expect(viewElement.props.style).toMatchObject(paginationNumberStyles.selected);
+        expect(textElement.props.style).toMatchObject(paginationNumberStyles.selectedNumberStyle);
     });
 });

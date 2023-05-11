@@ -4,15 +4,20 @@ import { View, Text, StyleSheet } from "react-native";
 export const PaginationNumber = ({ number, selected }) => {
   return (
       <View
-          style={selected? styles.selected : styles.screen}
+          style={selected? paginationNumberStyles.selected : paginationNumberStyles.screen}
           testID={selected ? 'selected-pagination-number-view' : 'pagination-number-view'}
       >
-          <Text style={selected? styles.selectedNumberStyle : styles.numberStyle }>{number}</Text>
+          <Text style={selected?
+              paginationNumberStyles.selectedNumberStyle : paginationNumberStyles.numberStyle
+          }
+          >
+              {number}
+          </Text>
       </View>
   )
 };
 
-export const styles = StyleSheet.create({
+export const paginationNumberStyles = StyleSheet.create({
     screen: {
         width: 30,
         height: 30,
