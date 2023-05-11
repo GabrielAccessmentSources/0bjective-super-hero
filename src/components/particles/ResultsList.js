@@ -23,6 +23,7 @@ export const ResultsList = withNavigation(({ results, navigation }) => {
                 renderItem={({item}) => {
                     return(
                         <TouchableOpacity
+                            testID={'result-item'}
                             style={styles.screen}
                             onPress={() => navigation.navigate('HeroDetail', { id: item.id})}>
                             <Image

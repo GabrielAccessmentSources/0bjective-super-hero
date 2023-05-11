@@ -3,15 +3,15 @@ import { View, Text, StyleSheet } from "react-native";
 
 export const HeroDetailBody = ({ description }) => {
   return(
-      <View style={styles.containerBody}>
-        <Text style={styles.subheaderText}>Description</Text>
+      <View style={heroBodyStyles.containerBody}>
+        <Text style={heroBodyStyles.subheaderText}>Description</Text>
 
-        <Text style={styles.textStyle}>{description}</Text>
+        <Text style={heroBodyStyles.textStyle}>{description}</Text>
       </View>
   )
 };
 
-const styles = StyleSheet.create({
+export const heroBodyStyles = StyleSheet.create({
   containerBody: {
     flex: 1,
     backgroundColor: "transparent",
