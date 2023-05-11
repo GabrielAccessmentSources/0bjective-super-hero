@@ -3,7 +3,10 @@ import { View, Text, StyleSheet } from "react-native";
 
 export const PaginationNumber = ({ number, selected }) => {
   return (
-      <View style={selected? styles.selected : styles.screen}>
+      <View
+          style={selected? styles.selected : styles.screen}
+          testID={selected ? 'selected-pagination-number-view' : 'pagination-number-view'}
+      >
           <Text style={selected? styles.selectedNumberStyle : styles.numberStyle }>{number}</Text>
       </View>
   )
